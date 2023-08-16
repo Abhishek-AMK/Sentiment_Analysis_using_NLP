@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis Bot</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="chatbox">
+            <div class="message bot-message">
+                <p>Hello! I'm your Sentiment Analysis Bot. How can I assist you today?</p>
+            </div>
+            {% for msg_type, msg_content in messages %}
+                <div class="message {{ msg_type }}-message">
+                    <p>{{ msg_content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="POST" action="/" id="chat-form">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.message(size=40, placeholder='Type a message...') }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Send</button>
+            </div>
+        </form>
+    </div>
+    <div class="processing" id="processing">
+        <p>Processing...</p>
+    </div>
+    <script>
+        document.getElementById("chat-form").addEventListener("submit", function () {
+            document.getElementById("processing").style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
