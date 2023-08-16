@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sentiment Analysis Bot</title>
+    <title>Sentiment Analyzer</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <div class="chatbox">
             <div class="message bot-message">
-                <p>Hello! I'm your Sentiment Analysis Bot. How can I assist you today?</p>
+                <p>Hello! I'm Sentiment Analyer. How can I help you today?</p>
             </div>
             {% for msg_type, msg_content in messages %}
                 <div class="message {{ msg_type }}-message">
@@ -19,7 +19,7 @@
         <form method="POST" action="/" id="chat-form">
             {{ form.csrf_token }}
             <div class="form-group">
-                {{ form.message(size=40, placeholder='Type a message...') }}
+                {{ form.message(size=40, placeholder='Write your text here...') }}
             </div>
             <div class="form-group">
                 <button type="submit" class="btn-submit">Send</button>
